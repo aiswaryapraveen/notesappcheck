@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Add Note</h2>
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <p>Title: <input type="text" name="title" required></p>
     <p>Content:<br><textarea name="content" rows="5" cols="30" required></textarea></p>
+    <p>Image: <input type="file" name="image"></p>
     <button type="submit">Save</button>
 </form>
 {% endblock %}

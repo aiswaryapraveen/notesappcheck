@@ -35,14 +35,26 @@ def home(request):
     notes = Note.objects.filter(user=request.user)
     return render(request, 'home.html', {'notes': notes})
 
+from .models import Note
+from django.contrib.auth.decorators import login_required
+
 @login_required
 def add_note(request):
     if request.method == 'POST':
-        title = request.POST['title']
-        content = request.POST['content']
-        Note.objects.create(user=request.user, title=title, content=content)
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        image = request.FILES.get('image')  # 👈 get uploaded file if any
+
+        Note.objects.create(
+            user=request.user,
+            title=title,
+            content=content,
+            image=image  # 👈 store it
+        )
         return redirect('home')
+
     return render(request, 'add_note.html')
+
 
 @login_required
 def delete_note(request, note_id):

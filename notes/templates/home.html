@@ -7,6 +7,10 @@
         <li>
             <strong>{{ note.title }}</strong><br>
             {{ note.content }} <br>
+            {% if note.image %}
+  <img src="{{ note.image.url }}" alt="Note Image" style="max-width: 200px;">
+{% endif %}
+
             <a href="{% url 'delete_note' note.id %}">Delete</a>
         </li>
     {% empty %}
