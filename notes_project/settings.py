@@ -118,7 +118,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 import os
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # If using local static folder
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For collectstatic
 # Default primary key field type
