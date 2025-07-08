@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['notesappcheck.onrender.com']
 
+LOGIN_URL = '/login/'
 
 # Application definition
 
